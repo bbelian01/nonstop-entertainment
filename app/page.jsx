@@ -61,15 +61,13 @@ export default function HomePage() {
                            border-2 border-transparent hover:border-[#E6D3B3] px-8 py-6 
                            text-lg rounded-xl transition-all transform hover:scale-105 group"
                 >
-                  <a
-                    href="https://non-stop-entertainment.checkcherry.com/contact/8038"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href="/get-a-quote"
                     className="flex items-center space-x-2"
                   >
                     <span>START YOUR JOURNEY</span>
                     <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </a>
+                  </Link>
                 </Button>
               </motion.div>
             </div>
@@ -100,8 +98,8 @@ export default function HomePage() {
                 </h3>
                 <p className="text-[#1E1E1E]/80 max-w-sm mx-auto">
                   Cutting-edge technology meets creative expertise to deliver experiences beyond imagination
-                </p>
-              </div>
+              </p>
+            </div>
 
               {/* Card 2 */}
               <div className="flex flex-col items-center text-center">
@@ -113,8 +111,8 @@ export default function HomePage() {
                 </h3>
                 <p className="text-[#1E1E1E]/80 max-w-sm mx-auto">
                   Every event is an opportunity to create something extraordinary and unique
-                </p>
-              </div>
+              </p>
+            </div>
 
               {/* Card 3 */}
               <div className="flex flex-col items-center text-center">
@@ -162,7 +160,7 @@ export default function HomePage() {
                   <span>Explore Our Services</span>
                   <ChevronRight className="w-5 h-5 ml-1" />
                 </Link>
-              </div>
+            </div>
             </motion.div>
 
             <motion.div 
@@ -172,14 +170,14 @@ export default function HomePage() {
               viewport={{ once: true }}
             >
               <div className="aspect-[4/3] relative rounded-2xl overflow-hidden shadow-2xl">
-                <Image
+              <Image
                   src="/setup3.jpg" 
                   alt="Event preview"
-                  fill
+                fill
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0B132B] to-transparent opacity-30"></div>
-              </div>
+            </div>
               <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-[#E6D3B3] rounded-2xl -z-10 opacity-10"></div>
             </motion.div>
           </div>
@@ -220,12 +218,10 @@ export default function HomePage() {
                        text-xl rounded-xl transition-all transform hover:scale-105 group"
             >
               <a
-                href="https://non-stop-entertainment.checkcherry.com/contact/8038"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/get-a-quote"
                 className="flex items-center space-x-2"
               >
-                <span>START THE CONVERSATION</span>
+                <span>Get Started Today</span>
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>

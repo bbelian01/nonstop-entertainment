@@ -101,7 +101,7 @@ export default function Navbar() {
               variant="ghost"
               className="!bg-[#E6D3B3] hover:!bg-[#3A6EA5] !text-[#0A1128] hover:!text-white !border-2 !border-transparent hover:!border-[#E6D3B3] transition-all whitespace-nowrap">
               <a
-                href="https://non-stop-entertainment.checkcherry.com/contact/8038"
+                href="/get-a-quote"
                 target="_blank"
                 rel="noopener noreferrer">
                 GET A QUOTE
@@ -158,7 +158,7 @@ export default function Navbar() {
               className="!bg-[#E6D3B3] hover:!bg-[#3A6EA5] !text-[#0A1128] hover:!text-white !border-2 !border-transparent hover:!border-[#E6D3B3] transition-all w-full"
               onClick={() => setMobileMenuOpen(false)}>
               <a
-                href="https://non-stop-entertainment.checkcherry.com/contact/8038"
+                href="/get-a-quote"
                 target="_blank"
                 rel="noopener noreferrer">
                 GET A QUOTE

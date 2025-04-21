@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Music, Users, Calendar, Award, CheckCircle } from "lucide-react"
+import Link from "next/link"
 
 export default function ServicesPage() {
   return (
@@ -19,7 +20,7 @@ export default function ServicesPage() {
                 Professional DJ Services for Sophisticated Celebrations
               </p>
               <div className="w-24 h-1 bg-[#0A1128] mx-auto mt-8"></div>
-            </div>
+        </div>
           </div>
         </div>
       </section>
@@ -34,7 +35,7 @@ export default function ServicesPage() {
                   CRAFTING UNFORGETTABLE MOMENTS
                 </h2>
                 <div className="w-20 h-1 bg-[#E6D3B3]"></div>
-                <p className="text-xl text-[#1E1E1E] leading-relaxed">
+            <p className="text-xl text-[#1E1E1E] leading-relaxed">
                   We specialize in delivering sophisticated entertainment for upscale adult events. Our expert DJs create the perfect atmosphere for your celebration.
                 </p>
                 <ul className="space-y-4 pt-4">
@@ -87,7 +88,7 @@ export default function ServicesPage() {
             <div className="bg-white p-8 rounded-lg text-center shadow-lg hover:shadow-xl transition-shadow">
               <div className="flex justify-center mb-6">
                 <Music className="h-12 w-12 text-[#E6D3B3]" />
-              </div>
+            </div>
               <h3 className="text-xl font-bold mb-4 text-[#0A1128]">CURATED MUSIC</h3>
               <p className="text-[#1E1E1E]">
                 Expertly crafted playlists tailored to your event's atmosphere and guest preferences.
@@ -97,17 +98,17 @@ export default function ServicesPage() {
             <div className="bg-white p-8 rounded-lg text-center shadow-lg hover:shadow-xl transition-shadow">
               <div className="flex justify-center mb-6">
                 <Users className="h-12 w-12 text-[#E6D3B3]" />
-              </div>
+          </div>
               <h3 className="text-xl font-bold mb-4 text-[#0A1128]">SKILLED EMCEES</h3>
               <p className="text-[#1E1E1E]">
                 Professional announcements and elegant event coordination throughout your celebration.
               </p>
-            </div>
+          </div>
 
             <div className="bg-white p-8 rounded-lg text-center shadow-lg hover:shadow-xl transition-shadow">
               <div className="flex justify-center mb-6">
                 <Award className="h-12 w-12 text-[#E6D3B3]" />
-              </div>
+            </div>
               <h3 className="text-xl font-bold mb-4 text-[#0A1128]">PREMIUM EQUIPMENT</h3>
               <p className="text-[#1E1E1E]">
                 State-of-the-art sound systems and lighting to create the perfect ambiance.
@@ -117,7 +118,7 @@ export default function ServicesPage() {
             <div className="bg-white p-8 rounded-lg text-center shadow-lg hover:shadow-xl transition-shadow">
               <div className="flex justify-center mb-6">
                 <Calendar className="h-12 w-12 text-[#E6D3B3]" />
-              </div>
+          </div>
               <h3 className="text-xl font-bold mb-4 text-[#0A1128]">SEAMLESS PLANNING</h3>
               <p className="text-[#1E1E1E]">
                 Detailed coordination with your venue and vendors for a stress-free experience.
@@ -271,17 +272,12 @@ export default function ServicesPage() {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-4xl font-bold mb-6">READY TO ELEVATE YOUR EVENT?</h2>
             <p className="text-xl mb-8">Let's create an unforgettable experience together.</p>
-            <Button
-              asChild
-              variant="ghost"
-              className="!bg-[#E6D3B3] hover:!bg-[#3A6EA5] !text-[#0A1128] hover:!text-white !border-2 !border-transparent hover:!border-[#E6D3B3] px-8 py-6 text-lg rounded-md transition-all">
-              <a
-                href="https://non-stop-entertainment.checkcherry.com/contact/8038"
-                target="_blank"
-                rel="noopener noreferrer">
+            <Link
+              href="/get-a-quote"
+              className="inline-flex items-center justify-center px-6 py-3 text-lg font-medium text-white transition-colors bg-bronze hover:bg-gold rounded-md"
+            >
                 GET A QUOTE
-              </a>
-            </Button>
+            </Link>
           </div>
         </div>
       </section>

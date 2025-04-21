@@ -4,6 +4,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Calendar, Users, Music, Star, CheckCircle, Award, Headphones, Heart } from "lucide-react"
 import { motion } from "framer-motion"
+import Link from "next/link"
 
 export default function AboutPageContent() {
   const fadeIn = {
@@ -248,21 +249,12 @@ export default function AboutPageContent() {
             <p className="text-lg md:text-xl mb-8 text-[#1E1E1E]/80">
               Let's transform your vision into an unforgettable celebration
             </p>
-            <Button
-              asChild
-              variant="ghost"
-              className="!bg-[#B87D4B] hover:!bg-[#D4AF37] !text-white hover:!text-white 
-                       !border-2 !border-transparent hover:!border-[#B87D4B] px-10 py-6 
-                       text-lg rounded-xl transition-all transform hover:scale-105"
+            <Link
+              href="/get-a-quote"
+              className="inline-flex items-center justify-center px-6 py-3 text-lg font-medium text-white transition-colors bg-bronze hover:bg-gold rounded-md"
             >
-              <a
-                href="https://non-stop-entertainment.checkcherry.com/contact/8038"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                START YOUR JOURNEY
-              </a>
-            </Button>
+              Get Started Today
+            </Link>
           </div>
         </motion.div>
       </section>

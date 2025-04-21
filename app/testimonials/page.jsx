@@ -4,6 +4,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { Quote, Star, ChevronRight } from "lucide-react"
+import Link from "next/link"
 
 export default function TestimonialsPage() {
   const fadeIn = {
@@ -163,23 +164,12 @@ export default function TestimonialsPage() {
             <p className="text-xl text-[#1E1E1E]/80 mb-12 max-w-2xl mx-auto">
               Join hundreds of satisfied clients who trusted us with their special moments
             </p>
-            <Button
-              asChild
-              variant="ghost"
-              className="!bg-[#B87D4B] hover:!bg-[#D4AF37] !text-white hover:!text-white 
-                       !border-2 !border-transparent hover:!border-[#B87D4B] px-12 py-6 
-                       text-lg rounded-xl transition-all transform hover:scale-105 group"
+            <Link
+              href="/get-a-quote"
+              className="inline-flex items-center justify-center px-6 py-3 text-lg font-medium text-white transition-colors bg-bronze hover:bg-gold rounded-md"
             >
-              <a
-                href="https://non-stop-entertainment.checkcherry.com/contact/8038"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-2"
-              >
-                <span>GET STARTED</span>
-                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </Button>
+              Book Your Event
+            </Link>
           </motion.div>
         </div>
       </section>
