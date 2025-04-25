@@ -93,16 +93,29 @@ export default function GetAQuote() {
   const onSubmit = async (data) => {
     setIsSubmitting(true)
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      console.log('Form submitted:', data)
-      toast.success("Quote request submitted successfully!")
-      router.push('/thank-you')
+      const response = await fetch('/api/send-quote', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+  
+      if (response.ok) {
+        toast.success("Quote request submitted successfully!")
+        router.push('/thank-you')
+      } else {
+        const errorData = await response.json()
+        toast.error(errorData.message || "Something went wrong. Please try again.")
+      }
     } catch (error) {
+      console.error('Submission error:', error)
       toast.error("Something went wrong. Please try again.")
     } finally {
       setIsSubmitting(false)
     }
   }
+  
 
   return (
     <div className="min-h-screen bg-white">
