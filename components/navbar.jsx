@@ -91,6 +91,11 @@ export default function Navbar() {
               TESTIMONIALS
             </Link>
             <Link
+              href="/content"
+              className="text-white font-bold hover:text-[#E6D3B3] transition-colors whitespace-nowrap">
+              CONTENT
+            </Link>
+            <Link
               href="/contact"
               className="text-white font-bold hover:text-[#E6D3B3] transition-colors whitespace-nowrap">
               CONTACT
@@ -144,6 +149,12 @@ export default function Navbar() {
               className={`text-white font-bold hover:text-[#E6D3B3] transition-colors py-2 ${isActive("/testimonials") ? "text-[#E6D3B3]" : ""}`}
               onClick={() => setMobileMenuOpen(false)}>
               TESTIMONIALS
+            </Link>
+            <Link
+              href="/content"
+              className={`text-white font-bold hover:text-[#E6D3B3] transition-colors py-2 ${isActive("/content") ? "text-[#E6D3B3]" : ""}`}
+              onClick={() => setMobileMenuOpen(false)}>
+              CONTENT
             </Link>
             <Link
               href="/contact"

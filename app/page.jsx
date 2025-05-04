@@ -209,16 +209,16 @@ export default function HomePage() {
               <motion.div className="overflow-hidden">
                 <AnimatedText
                   text="Where Every Moment"
-                  className="text-5xl md:text-7xl font-bold text-white"
+                  className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-white via-white to-white/80 text-transparent bg-clip-text"
                 />
                 <AnimatedText
                   text="Becomes Legendary"
-                  className="text-5xl md:text-7xl font-bold text-[#E6D3B3] mt-2"
+                  className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-[#E6D3B3] via-[#E6D3B3] to-[#C4A47C] text-transparent bg-clip-text mt-2"
                 />
               </motion.div>
 
               <motion.p
-                className="text-xl md:text-2xl text-white/90 mb-12 mt-6"
+                className="text-xl md:text-2xl bg-gradient-to-r from-white/90 to-white/70 text-transparent bg-clip-text mb-12 mt-6"
                 variants={fadeIn}
                 initial="initial"
                 animate="animate"
