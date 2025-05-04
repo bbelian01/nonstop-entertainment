@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { Upload, Image as ImageIcon, Film, X, Play } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import HeroSection21st from "@/components/ui/HeroSection21st"
 
 // Add your content items here
 const contentItems = [
@@ -125,23 +126,16 @@ export default function ContentPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative py-24 bg-[#0B132B]">
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="max-w-4xl mx-auto text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Our Event <span className="text-[#E6D3B3]">Gallery</span>
-            </h1>
-            <p className="text-xl text-white/90 mb-8">
-              Explore our collection of unforgettable moments and legendary experiences
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <HeroSection21st
+        badge={{ text: "Gallery" }}
+        title="Our Event Gallery"
+        description="Explore our collection of unforgettable moments and legendary experiences. See the magic we've created for our clients."
+        actions={[
+          { text: "Get a Quote", href: "/get-a-quote", variant: "default" },
+        ]}
+        backgroundImage="/event1.jpeg"
+        className="text-white"
+      />
 
       {/* Gallery Section */}
       <section className="py-16 bg-gray-50">

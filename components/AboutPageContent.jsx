@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Calendar, Users, Music, Star, CheckCircle, Award, Headphones, Heart } from "lucide-react"
 import { motion } from "framer-motion"
 import Link from "next/link"
+import HeroSection21st from "@/components/ui/HeroSection21st"
 
 export default function AboutPageContent() {
   const fadeIn = {
@@ -22,33 +23,16 @@ export default function AboutPageContent() {
   return (
     <>
       {/* Hero Section - More Compact */}
-      <section className="relative h-[70vh] flex items-center justify-center overflow-hidden bg-white">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/dj-lights.jpg"
-            alt="DJ Equipment with dramatic lighting"
-            fill
-            className="object-cover opacity-20"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/50 to-white"></div>
-        </div>
-        
-        <motion.div 
-          className="relative z-10 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
-          <h1 className="text-5xl md:text-7xl font-bold text-[#1E1E1E] mb-4 tracking-tight">
-            THE FACES BEHIND<br />THE MUSIC
-          </h1>
-          <div className="w-32 h-1 bg-[#B87D4B] mx-auto mb-6"></div>
-          <p className="text-xl md:text-2xl text-[#1E1E1E]/80 max-w-2xl mx-auto font-light">
-            Meet the visionaries who transform events into unforgettable experiences
-          </p>
-        </motion.div>
-      </section>
+      <HeroSection21st
+        badge={{ text: "Meet the Team" }}
+        title="The Faces Behind the Music"
+        description="Meet the visionaries who transform events into unforgettable experiences. Learn more about our story and our team."
+        actions={[
+          { text: "Get a Quote", href: "/get-a-quote", variant: "default" },
+        ]}
+        backgroundImage="/setup2.jpg"
+        className="text-white"
+      />
 
       {/* Company Story - More Visual */}
       <section className="py-16 bg-gradient-to-b from-white to-[#F8F8F8]">

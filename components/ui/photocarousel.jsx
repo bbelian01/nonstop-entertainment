@@ -66,13 +66,23 @@ export default function PhotoCarousel() {
             }}
             className="absolute inset-0"
           >
-            <Image
-              src={images[currentIndex]}
-              alt={`Event photo ${currentIndex + 1}`}
-              fill
-              className="object-cover rounded-xl"
-              priority
-            />
+            <motion.div
+              initial={{ scale: 1, filter: "grayscale(40%) blur(2px)" }}
+              animate={{ scale: 1.08, filter: "grayscale(0%) blur(0px)" }}
+              exit={{ scale: 1, filter: "grayscale(40%) blur(2px)" }}
+              transition={{ duration: 5, ease: "linear" }}
+              className="w-full h-full"
+            >
+              <Image
+                src={images[currentIndex]}
+                alt={`Event photo ${currentIndex + 1}`}
+                fill
+                className="object-cover rounded-xl shadow-2xl border-4 border-white"
+                priority
+              />
+              {/* Overlay gradient */}
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-black/40 via-black/10 to-transparent pointer-events-none" />
+            </motion.div>
           </motion.div>
         </AnimatePresence>
       </div>

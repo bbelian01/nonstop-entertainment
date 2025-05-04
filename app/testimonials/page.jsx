@@ -6,6 +6,7 @@ import { motion } from "framer-motion"
 import { Quote, Star, ChevronRight, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
+import HeroSection21st from "@/components/ui/HeroSection21st"
 
 const testimonials = [
   {
@@ -81,51 +82,17 @@ const TestimonialCard = ({ quote, author, eventType, image, rating, className })
 export default function TestimonialsPage() {
   return (
     <div className="relative overflow-hidden bg-white">
-      {/* Hero Section */}
-      <section className="relative isolate px-6 pt-24 sm:pt-32 lg:px-8">
-        <div className="absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-transparent" />
-          <Image
-            src="/dj-lights.jpg"
-            alt="DJ Equipment with dramatic lighting"
-            fill
-            className="object-cover opacity-20"
-            priority
-          />
-        </div>
-        
-        <div className="mx-auto max-w-2xl text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="inline-flex items-center rounded-full bg-[#B87D4B]/10 px-6 py-2 text-[#B87D4B]">
-              WHAT OUR CLIENTS SAY
-            </span>
-          </motion.div>
-          
-          <motion.h1
-            className="mt-8 bg-gradient-to-b from-gray-900 to-gray-600 bg-clip-text text-5xl font-bold tracking-tight text-transparent sm:text-7xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            Real Stories from
-            <br />
-            Real Celebrations
-          </motion.h1>
-          
-          <motion.p
-            className="mt-6 text-lg leading-8 text-gray-600"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            Discover why Chicago's most memorable events trust Non-Stop Entertainment
-          </motion.p>
-        </div>
-      </section>
+      {/* Hero Section - 21st.dev modern video hero */}
+      <HeroSection21st
+        badge={{ text: "Client Stories" }}
+        title="Real Stories from Real Celebrations"
+        description="Discover why Chicago's most memorable events trust Non-Stop Entertainment. Read testimonials from our happy clients."
+        actions={[
+          { text: "Book Your Event", href: "/get-a-quote", variant: "default" },
+        ]}
+        backgroundImage="/countryclub.jpg"
+        className="text-white"
+      />
 
       {/* Featured Testimonial */}
       <section className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">

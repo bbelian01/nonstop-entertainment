@@ -62,9 +62,41 @@ const images = [
 
 function VideoPlayer() {
   const videoRef = useRef(null)
+  const containerRef = useRef(null)
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(true)
   const [volume, setVolume] = useState(0.5)
+  const [inView, setInView] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  // Intersection Observer for scroll-based play/pause
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting)
+      },
+      { threshold: 0.5 }
+    )
+    if (containerRef.current) {
+      observer.observe(containerRef.current)
+    }
+    return () => {
+      if (containerRef.current) observer.unobserve(containerRef.current)
+    }
+  }, [])
+
+  // Auto play/pause based on inView
+  useEffect(() => {
+    if (videoRef.current) {
+      if (inView) {
+        videoRef.current.play()
+        setIsPlaying(true)
+      } else {
+        videoRef.current.pause()
+        setIsPlaying(false)
+      }
+    }
+  }, [inView])
 
   const togglePlay = () => {
     if (isPlaying) {
@@ -94,6 +126,7 @@ function VideoPlayer() {
 
   return (
     <motion.div
+      ref={containerRef}
       className="relative"
       variants={fadeIn}
       initial="initial"
@@ -101,12 +134,19 @@ function VideoPlayer() {
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.3 }}
     >
-      <video
+      <motion.video
         ref={videoRef}
         src="/promo.mp4"
         className="w-full rounded-xl shadow-lg aspect-video"
         loop
         muted={isMuted}
+        onLoadedData={() => setIsLoaded(true)}
+        style={{
+          objectFit: 'cover',
+        }}
+        initial={{ scale: 1 }}
+        animate={{ scale: isLoaded ? 1.08 : 1 }}
+        transition={{ duration: 20, repeat: Infinity, repeatType: 'reverse', ease: 'linear' }}
       />
 
       <motion.div
