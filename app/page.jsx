@@ -8,6 +8,48 @@ import { motion } from "framer-motion"
 import { ChevronRight, Sparkles, Heart, Zap } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 import { ChevronLeft, Play, Pause, Volume2, VolumeX } from "lucide-react"
+import {
+  fadeIn,
+  staggerContainer,
+  textReveal,
+  scrollReveal,
+  cardHover,
+  buttonHover,
+  containerAnimation,
+  pageTransition
+} from "@/components/animations"
+
+const AnimatedText = ({ text, className }) => {
+  return (
+    <motion.span
+      className="inline-block overflow-hidden"
+      variants={containerAnimation}
+      initial="initial"
+      animate="animate"
+    >
+      {text.split(" ").map((word, index) => (
+        <motion.span
+          key={index}
+          className="inline-block"
+          variants={{
+            initial: { y: "100%", opacity: 0 },
+            animate: {
+              y: 0,
+              opacity: 1,
+              transition: {
+                duration: 0.8,
+                ease: "easeOut",
+                delay: index * 0.1
+              }
+            }
+          }}
+        >
+          <span className={`inline-block ${className}`}>{word}&nbsp;</span>
+        </motion.span>
+      ))}
+    </motion.span>
+  )
+}
 
 const images = [
   "/event1.jpeg",
@@ -17,8 +59,6 @@ const images = [
   "/event5.jpeg",
   "/event6.jpeg",
 ]
-
-
 
 function VideoPlayer() {
   const videoRef = useRef(null)
@@ -53,7 +93,14 @@ function VideoPlayer() {
   }, [volume])
 
   return (
-    <div className="relative">
+    <motion.div
+      className="relative"
+      variants={fadeIn}
+      initial="initial"
+      animate="animate"
+      whileHover={{ scale: 1.02 }}
+      transition={{ duration: 0.3 }}
+    >
       <video
         ref={videoRef}
         src="/promo.mp4"
@@ -62,15 +109,30 @@ function VideoPlayer() {
         muted={isMuted}
       />
 
-      <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between bg-black/50 p-2 rounded-full">
-        <button onClick={togglePlay} className="text-white hover:text-[#E6D3B3] transition-colors">
+      <motion.div
+        className="absolute bottom-4 left-4 right-4 flex items-center justify-between bg-black/50 p-2 rounded-full"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+      >
+        <motion.button
+          onClick={togglePlay}
+          className="text-white hover:text-[#E6D3B3] transition-colors"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+        >
           {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
-        </button>
+        </motion.button>
 
         <div className="flex items-center space-x-2">
-          <button onClick={toggleMute} className="text-white hover:text-[#E6D3B3] transition-colors">
+          <motion.button
+            onClick={toggleMute}
+            className="text-white hover:text-[#E6D3B3] transition-colors"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
             {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
-          </button>
+          </motion.button>
           <input
             type="range"
             min="0"
@@ -81,66 +143,113 @@ function VideoPlayer() {
             className="w-20"
           />
         </div>
-      </div>
+      </motion.div>
+    </motion.div>
+  )
+}
+
+const HeroBackground = () => {
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  return (
+    <div className="absolute inset-0 z-0 overflow-hidden">
+      <motion.div
+        className="relative w-full h-full"
+        animate={{
+          scale: isLoaded ? 1.1 : 1
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "linear"
+        }}
+      >
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          onLoadedData={() => setIsLoaded(true)}
+        >
+          <source src="/hero-bg.mp4" type="video/mp4" />
+        </video>
+      </motion.div>
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#0B132B]/90"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+      />
     </div>
   )
 }
 
 export default function HomePage() {
   return (
-    <>
+    <motion.div
+      variants={pageTransition}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
       {/* Hero Section - Unique Focus on Impact */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image src="/vdp.jpg" alt="Epic event moment" fill className="object-cover" priority />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#0B132B]/90"></div>
-        </div>
+        <HeroBackground />
 
         <div className="container relative z-20 mx-auto px-4">
           <motion.div
             className="max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            variants={staggerContainer}
+            initial="initial"
+            animate="animate"
           >
             <div className="text-center mb-8">
-              <motion.h1
-                className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-              >
-                Where Every Moment
-                <br />
-                Becomes <span className="text-[#E6D3B3]">Legendary</span>
-              </motion.h1>
+              <motion.div className="overflow-hidden">
+                <AnimatedText
+                  text="Where Every Moment"
+                  className="text-5xl md:text-7xl font-bold text-white"
+                />
+                <AnimatedText
+                  text="Becomes Legendary"
+                  className="text-5xl md:text-7xl font-bold text-[#E6D3B3] mt-2"
+                />
+              </motion.div>
 
               <motion.p
-                className="text-xl md:text-2xl text-white/90 mb-12"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
+                className="text-xl md:text-2xl text-white/90 mb-12 mt-6"
+                variants={fadeIn}
+                initial="initial"
+                animate="animate"
+                transition={{ delay: 1 }}
               >
                 Transform your event into an unforgettable experience with Chicago's most innovative entertainment team
               </motion.p>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
+                variants={fadeIn}
+                initial="initial"
+                animate="animate"
+                transition={{ delay: 1.2 }}
                 className="flex flex-col md:flex-row items-center justify-center gap-4"
               >
-                <Button
-                  asChild
-                  className="bg-[#E6D3B3] hover:bg-[#3A6EA5] text-[#0A1128] hover:text-white 
-                           border-2 border-transparent hover:border-[#E6D3B3] px-8 py-6 
-                           text-lg rounded-xl transition-all transform hover:scale-105 group"
+                <motion.div
+                  variants={buttonHover}
+                  whileHover="hover"
                 >
-                  <Link href="/get-a-quote" className="flex items-center space-x-2">
-                    <span>START YOUR JOURNEY</span>
-                    <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </Button>
+                  <Button
+                    asChild
+                    className="bg-[#E6D3B3] hover:bg-[#3A6EA5] text-[#0A1128] hover:text-white 
+                             border-2 border-transparent hover:border-[#E6D3B3] px-8 py-6 
+                             text-lg rounded-xl transition-all transform group"
+                  >
+                    <Link href="/get-a-quote" className="flex items-center space-x-2">
+                      <span>START YOUR JOURNEY</span>
+                      <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </Button>
+                </motion.div>
               </motion.div>
             </div>
           </motion.div>
@@ -148,8 +257,15 @@ export default function HomePage() {
 
         <motion.div
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
+          animate={{
+            y: [0, 10, 0],
+            opacity: [0.3, 1, 0.3]
+          }}
+          transition={{
+            repeat: Infinity,
+            duration: 2,
+            ease: "easeInOut"
+          }}
         >
           <ChevronRight className="w-8 h-8 text-white/50 rotate-90" />
         </motion.div>
@@ -158,154 +274,176 @@ export default function HomePage() {
       {/* Core Values Section */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
+          <motion.div
+            className="max-w-6xl mx-auto"
+            variants={containerAnimation}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+          >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12">
               {/* Card 1 */}
-              <div className="flex flex-col items-center text-center">
-                <div className="mb-6 p-4 bg-[#E6D3B3]/10 rounded-full">
+              <motion.div
+                className="flex flex-col items-center text-center"
+                variants={scrollReveal}
+                whileHover={{ y: -10 }}
+                transition={{ duration: 0.3 }}
+              >
+                <motion.div
+                  className="mb-6 p-4 bg-[#E6D3B3]/10 rounded-full"
+                  whileHover={{ scale: 1.1, backgroundColor: "rgba(230, 211, 179, 0.2)" }}
+                >
                   <Sparkles className="w-8 h-8 text-[#E6D3B3]" />
-                </div>
+                </motion.div>
                 <h3 className="text-2xl font-bold text-[#0B132B] mb-3">Innovation First</h3>
                 <p className="text-[#1E1E1E]/80 max-w-sm mx-auto">
                   Cutting-edge technology meets creative expertise to deliver experiences beyond imagination
                 </p>
-              </div>
+              </motion.div>
 
               {/* Card 2 */}
-              <div className="flex flex-col items-center text-center">
-                <div className="mb-6 p-4 bg-[#E6D3B3]/10 rounded-full">
+              <motion.div
+                className="flex flex-col items-center text-center"
+                variants={scrollReveal}
+                whileHover={{ y: -10 }}
+                transition={{ duration: 0.3 }}
+              >
+                <motion.div
+                  className="mb-6 p-4 bg-[#E6D3B3]/10 rounded-full"
+                  whileHover={{ scale: 1.1, backgroundColor: "rgba(230, 211, 179, 0.2)" }}
+                >
                   <Heart className="w-8 h-8 text-[#E6D3B3]" />
-                </div>
+                </motion.div>
                 <h3 className="text-2xl font-bold text-[#0B132B] mb-3">Passion Driven</h3>
                 <p className="text-[#1E1E1E]/80 max-w-sm mx-auto">
                   Every event is an opportunity to create something extraordinary and unique
                 </p>
-              </div>
+              </motion.div>
 
               {/* Card 3 */}
-              <div className="flex flex-col items-center text-center">
-                <div className="mb-6 p-4 bg-[#E6D3B3]/10 rounded-full">
+              <motion.div
+                className="flex flex-col items-center text-center"
+                variants={scrollReveal}
+                whileHover={{ y: -10 }}
+                transition={{ duration: 0.3 }}
+              >
+                <motion.div
+                  className="mb-6 p-4 bg-[#E6D3B3]/10 rounded-full"
+                  whileHover={{ scale: 1.1, backgroundColor: "rgba(230, 211, 179, 0.2)" }}
+                >
                   <Zap className="w-8 h-8 text-[#E6D3B3]" />
-                </div>
+                </motion.div>
                 <h3 className="text-2xl font-bold text-[#0B132B] mb-3">Energy Masters</h3>
                 <p className="text-[#1E1E1E]/80 max-w-sm mx-auto">
                   Expertly crafting the perfect atmosphere and maintaining the perfect vibe
                 </p>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Interactive Photo Carousel */}
       <section className="py-24 bg-[#F8F8F8]">
         <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
+          <motion.div
+            className="max-w-7xl mx-auto"
+            variants={containerAnimation}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+          >
             <motion.div
               className="text-center mb-16"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              variants={fadeIn}
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-[#0B132B] mb-6">Our Legendary Events</h2>
-              <div className="w-20 h-1 bg-[#E6D3B3] mx-auto"></div>
-              <p className="text-lg text-[#1E1E1E]/80 max-w-3xl mx-auto mt-6">
+              <AnimatedText
+                text="Our Legendary Events"
+                className="text-4xl md:text-5xl font-bold text-[#0B132B]"
+              />
+              <motion.div
+                className="w-20 h-1 bg-[#E6D3B3] mx-auto"
+                initial={{ width: 0 }}
+                whileInView={{ width: 80 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+              />
+              <motion.p
+                className="text-lg text-[#1E1E1E]/80 max-w-3xl mx-auto mt-6"
+                variants={fadeIn}
+              >
                 Browse through our gallery of unforgettable moments we've created for our clients
-              </p>
+              </motion.p>
             </motion.div>
 
             <PhotoCarousel />
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Video Showcase */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          <motion.div
+            className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center"
+            variants={containerAnimation}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+          >
             <motion.div
               className="space-y-8"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              variants={fadeIn}
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-[#0B132B]">
-                Your Vision,
-                <br />
-                Our Expertise
-              </h2>
-              <div className="w-20 h-1 bg-[#E6D3B3]"></div>
+              <AnimatedText
+                text="Your Vision,"
+                className="text-4xl md:text-5xl font-bold text-[#0B132B]"
+              />
+              <AnimatedText
+                text="Our Expertise"
+                className="text-4xl md:text-5xl font-bold text-[#0B132B]"
+              />
+              
+              <motion.div
+                className="w-20 h-1 bg-[#E6D3B3]"
+                initial={{ width: 0 }}
+                whileInView={{ width: 80 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+              />
 
-              <p className="text-lg text-[#1E1E1E]/80">
+              <motion.p
+                className="text-lg text-[#1E1E1E]/80"
+                variants={fadeIn}
+              >
                 From intimate gatherings to grand celebrations, we bring your vision to life with precision and
                 creativity. Our approach combines technical excellence with an intuitive understanding of what makes an
                 event truly memorable.
-              </p>
+              </motion.p>
 
-              <div className="flex items-center space-x-4">
-                <Link
-                  href="/services"
-                  className="inline-flex items-center text-[#0B132B] hover:text-[#E6D3B3] transition-colors"
+              <motion.div
+                className="flex items-center space-x-4"
+                variants={fadeIn}
+              >
+                <motion.div
+                  variants={buttonHover}
+                  whileHover="hover"
                 >
-                  <span>Explore Our Services</span>
-                  <ChevronRight className="w-5 h-5 ml-1" />
-                </Link>
-              </div>
+                  <Link
+                    href="/services"
+                    className="inline-flex items-center text-[#0B132B] hover:text-[#E6D3B3] transition-colors"
+                  >
+                    <span>Explore Our Services</span>
+                    <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </motion.div>
+              </motion.div>
             </motion.div>
 
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <VideoPlayer />
-            </motion.div>
-          </div>
+            <VideoPlayer />
+          </motion.div>
         </div>
       </section>
-
-      {/* Call to Action - Unique Approach */}
-      <section className="relative py-32 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/cta-unique.jpg" // Unique image not used elsewhere
-            alt="Event atmosphere"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0B132B]/90 to-[#0B132B]/80"></div>
-        </div>
-
-        <motion.div
-          className="container relative z-10 mx-auto px-4"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-              Let's Create Something
-              <br />
-              Extraordinary
-            </h2>
-            <p className="text-xl text-white/90 mb-8">Your perfect event begins with a conversation</p>
-            <Button
-              asChild
-              variant="ghost"
-              className="!bg-[#E6D3B3] hover:!bg-[#3A6EA5] !text-[#0A1128] hover:!text-white 
-                       !border-2 !border-transparent hover:!border-[#E6D3B3] px-12 py-8 
-                       text-xl rounded-xl transition-all transform hover:scale-105 group"
-            >
-              <a href="/get-a-quote" className="flex items-center space-x-2">
-                <span>Get Started Today</span>
-                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </Button>
-          </div>
-        </motion.div>
-      </section>
-    </>
+    </motion.div>
   )
 }
