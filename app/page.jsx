@@ -5,7 +5,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { ChevronRight, Sparkles, Heart, Zap } from "lucide-react"
+import { ChevronRight, Sparkles, Heart, Zap, Music, Users, Calendar, Award, CheckCircle, ArrowRight } from "lucide-react"
 import { useState, useEffect, useRef } from "react"
 import { ChevronLeft, Play, Pause, Volume2, VolumeX } from "lucide-react"
 import {
@@ -312,22 +312,30 @@ export default function HomePage() {
       </section>
 
       {/* Core Values Section */}
-      <section className="py-12 bg-white">
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             className="max-w-6xl mx-auto"
-            variants={containerAnimation}
+            variants={fadeIn}
             initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
+            animate="animate"
+            transition={{ duration: 0.5 }}
           >
+            <motion.h2 
+              className="text-4xl md:text-5xl font-bold text-center text-[#0B132B] mb-16"
+              variants={fadeIn}
+              initial="initial"
+              animate="animate"
+            >
+              Our Core Values
+            </motion.h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12">
               {/* Card 1 */}
               <motion.div
                 className="flex flex-col items-center text-center"
-                variants={scrollReveal}
-                whileHover={{ y: -10 }}
-                transition={{ duration: 0.3 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
               >
                 <motion.div
                   className="mb-6 p-4 bg-[#E6D3B3]/10 rounded-full"
@@ -335,18 +343,18 @@ export default function HomePage() {
                 >
                   <Sparkles className="w-8 h-8 text-[#E6D3B3]" />
                 </motion.div>
-                <h3 className="text-2xl font-bold text-[#0B132B] mb-3">Innovation First</h3>
+                <h3 className="text-2xl font-bold text-[#0B132B] mb-3">Client-First</h3>
                 <p className="text-[#1E1E1E]/80 max-w-sm mx-auto">
-                  Cutting-edge technology meets creative expertise to deliver experiences beyond imagination
+                  Prioritizing the needs of our clients above all else
                 </p>
               </motion.div>
 
               {/* Card 2 */}
               <motion.div
                 className="flex flex-col items-center text-center"
-                variants={scrollReveal}
-                whileHover={{ y: -10 }}
-                transition={{ duration: 0.3 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
               >
                 <motion.div
                   className="mb-6 p-4 bg-[#E6D3B3]/10 rounded-full"
@@ -354,18 +362,18 @@ export default function HomePage() {
                 >
                   <Heart className="w-8 h-8 text-[#E6D3B3]" />
                 </motion.div>
-                <h3 className="text-2xl font-bold text-[#0B132B] mb-3">Passion Driven</h3>
+                <h3 className="text-2xl font-bold text-[#0B132B] mb-3">Memory Driven</h3>
                 <p className="text-[#1E1E1E]/80 max-w-sm mx-auto">
-                  Every event is an opportunity to create something extraordinary and unique
+                  Every event is an opportunity to create a lifelong memory
                 </p>
               </motion.div>
 
               {/* Card 3 */}
               <motion.div
                 className="flex flex-col items-center text-center"
-                variants={scrollReveal}
-                whileHover={{ y: -10 }}
-                transition={{ duration: 0.3 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
               >
                 <motion.div
                   className="mb-6 p-4 bg-[#E6D3B3]/10 rounded-full"
@@ -373,9 +381,10 @@ export default function HomePage() {
                 >
                   <Zap className="w-8 h-8 text-[#E6D3B3]" />
                 </motion.div>
-                <h3 className="text-2xl font-bold text-[#0B132B] mb-3">Energy Masters</h3>
+                <h3 className="text-2xl font-bold text-[#0B132B] mb-3">Energy? Always.</h3>
                 <p className="text-[#1E1E1E]/80 max-w-sm mx-auto">
-                  Expertly crafting the perfect atmosphere and maintaining the perfect vibe
+                  Expertly crafting the perfect atmosphere and maintaining an aesthetic vibe 
+                   <i> Non-Stop</i>
                 </p>
               </motion.div>
             </div>

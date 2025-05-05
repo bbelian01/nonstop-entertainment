@@ -67,9 +67,9 @@ export default function PhotoCarousel() {
             className="absolute inset-0"
           >
             <motion.div
-              initial={{ scale: 1, filter: "grayscale(40%) blur(2px)" }}
-              animate={{ scale: 1.08, filter: "grayscale(0%) blur(0px)" }}
-              exit={{ scale: 1, filter: "grayscale(40%) blur(2px)" }}
+              initial={{ scale: 1, filter: "grayscale(40%)" }}
+              animate={{ scale: 1.08, filter: "grayscale(0%)" }}
+              exit={{ scale: 1, filter: "grayscale(40%)" }}
               transition={{ duration: 5, ease: "linear" }}
               className="w-full h-full"
             >
