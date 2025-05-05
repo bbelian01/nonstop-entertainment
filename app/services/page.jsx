@@ -65,7 +65,10 @@ const StatCard = ({ number, text, bgColor }) => (
   >
     <motion.div className="relative z-10">
       <motion.h3
-        className="bg-gradient-to-r from-[#0A1128] to-[#1E1E1E] bg-clip-text text-4xl font-bold text-transparent"
+        className={cn(
+          "text-4xl font-bold",
+          bgColor === "bg-[#0A1128]" ? "text-white" : "bg-gradient-to-r from-[#0A1128] to-[#1E1E1E] bg-clip-text text-transparent"
+        )}
         initial={{ scale: 0.5 }}
         whileInView={{ scale: 1 }}
         viewport={{ once: true }}
@@ -73,7 +76,10 @@ const StatCard = ({ number, text, bgColor }) => (
       >
         {number}
       </motion.h3>
-      <p className="mt-2 text-[#1E1E1E]">{text}</p>
+      <p className={cn(
+        "mt-2",
+        bgColor === "bg-[#0A1128]" ? "text-white" : "text-[#1E1E1E]"
+      )}>{text}</p>
     </motion.div>
     <div className="absolute inset-0 -z-10 bg-gradient-to-br from-white via-white to-gray-100 opacity-0 transition-opacity group-hover:opacity-100" />
   </motion.div>
@@ -155,7 +161,20 @@ export default function ServicesPage() {
       {/* Hero Section - 21st.dev modern video hero */}
       <HeroSection21st
         badge={{ text: "Services" }}
-        title="Our Services"
+        title={
+          <>
+            <div className="flex items-baseline justify-center gap-x-3">
+              <span>Our</span>
+              <span className="bg-gradient-to-r from-[#E6D3B3] via-[#E6D3B3] to-[#C4A47C] text-transparent bg-clip-text">
+                First-Class
+              </span>
+              <span>Services</span>
+            </div>
+            <div className="mt-4 text-2xl md:text-3xl font-normal text-[#E6D3B3]">
+              8+ years of experience with event entertainment serving ages 4+
+            </div>
+          </>
+        }
         description="From intimate gatherings to grand celebrations, we provide premium DJ services tailored to your event's unique needs."
         actions={[
           { text: "Get a Quote", href: "/get-a-quote", variant: "default" }
@@ -206,7 +225,7 @@ export default function ServicesPage() {
                   className="space-y-4 pt-4"
                   variants={staggerContainer}
                 >
-                  {["Corporate Galas & Events", "Milestone Celebrations", "Upscale Private Parties"].map((item, index) => (
+                  {["Corporate Galas & Events", "Milestone Celebrations", "School Events & Ceremonies"].map((item, index) => (
                     <motion.li
                       key={index}
                       className="flex items-center space-x-3"
@@ -230,7 +249,7 @@ export default function ServicesPage() {
                 </div>
                 <div className="space-y-4 pt-8">
                   <StatCard number="100%" text="Client Satisfaction" bgColor="bg-[#0A1128]" />
-                  <StatCard number="20+" text="Venues Partnered" bgColor="bg-[#DCE0E6]" />
+                  <StatCard number="200+" text="Returning Clients" bgColor="bg-[#DCE0E6]" />
                 </div>
               </div>
             </div>
@@ -261,17 +280,17 @@ export default function ServicesPage() {
               <FeatureCard
                 icon={Users}
                 title="SKILLED EMCEES"
-                description="Professional announcements and elegant event coordination throughout your celebration."
+                description="Professional announcements and elegant event coordination throughout your celebration to keep vibes high."
               />
               <FeatureCard
                 icon={Award}
                 title="PREMIUM EQUIPMENT"
-                description="State-of-the-art sound systems and lighting to create the perfect ambiance."
+                description="Inudstry standardsound systems and lighting rigs to create the perfect ambiance."
               />
               <FeatureCard
                 icon={Calendar}
                 title="SEAMLESS PLANNING"
-                description="Detailed coordination with your venue and vendors for a stress-free experience."
+                description="Detailed coordination and personalized itineraries with your venue and vendors for a stress-free experience."
               />
             </div>
           </motion.div>
@@ -304,7 +323,7 @@ export default function ServicesPage() {
               />
               
               <EventTypeCard
-                image="/private.jpg"
+                image="/private-celebrations.jpg"
                 title="PRIVATE CELEBRATIONS"
                 features={[
                   "Milestone birthdays & anniversaries",

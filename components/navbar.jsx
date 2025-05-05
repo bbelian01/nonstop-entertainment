@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Menu, X, Phone, Mail, LogIn } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -35,18 +36,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4">
         {/* Top Bar - Only visible on desktop */}
-        <div className="hidden md:flex justify-between items-center text-white mb-2 text-sm">
-          <div className="flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="!bg-transparent hover:!bg-[#E6D3B3]/10 !text-white hover:!text-[#E6D3B3] !border !border-[#E6D3B3]/30 hover:!border-[#E6D3B3] transition-all"
-              onClick={() => window.location.href = '/login'}
-            >
-              <LogIn size={14} className="mr-2" />
-              Log In
-            </Button>
-          </div>
+        <div className="hidden md:flex justify-end items-center text-white mb-2 text-sm">
           <div className="flex items-center space-x-6">
             <a href="tel:224-216-4402" className="flex items-center hover:text-[#E6D3B3] transition-colors">
               <Phone size={14} className="mr-2" />
@@ -63,9 +53,14 @@ export default function Navbar() {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="flex items-center flex-shrink-0">
-            <span className="text-white font-bold text-xl hover:text-[#E6D3B3] transition-colors">
-              NONSTOP ENTERTAINMENT
-            </span>
+            <Image
+              src="/Logo.jpg"
+              alt="Non-Stop Entertainment"
+              width={200}
+              height={55}
+              className="object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -118,6 +113,15 @@ export default function Navbar() {
                 className="!bg-[#E6D3B3] hover:!bg-[#3A6EA5] !text-[#0A1128] hover:!text-white !border-2 !border-transparent hover:!border-[#E6D3B3] transition-all"
               >
                 <Link href="/get-a-quote">GET A QUOTE</Link>
+              </Button>
+              <Button
+                variant="ghost"
+                size="default"
+                className="!bg-transparent hover:!bg-[#E6D3B3]/10 !text-white hover:!text-[#E6D3B3] !border !border-[#E6D3B3]/30 hover:!border-[#E6D3B3] transition-all"
+                onClick={() => window.location.href = '/login'}
+              >
+                <LogIn size={16} className="mr-2" />
+                Log In
               </Button>
             </div>
           </nav>
@@ -190,6 +194,18 @@ export default function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <Link href="/get-a-quote">GET A QUOTE</Link>
+              </Button>
+              <Button
+                variant="ghost"
+                size="default"
+                className="!bg-transparent hover:!bg-[#E6D3B3]/10 !text-white hover:!text-[#E6D3B3] !border !border-[#E6D3B3]/30 hover:!border-[#E6D3B3] transition-all"
+                onClick={() => {
+                  window.location.href = '/login';
+                  setMobileMenuOpen(false);
+                }}
+              >
+                <LogIn size={16} className="mr-2" />
+                Log In
               </Button>
 
               {/* Mobile Contact Info */}

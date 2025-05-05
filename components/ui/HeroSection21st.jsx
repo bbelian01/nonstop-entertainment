@@ -59,14 +59,18 @@ function HeroSection21st({
   useEffect(() => {
     const splitText = () => {
       if (!titleRef.current) return;
-      const text = titleRef.current.innerText;
-      const words = text.split(' ');
-      titleRef.current.innerHTML = words.map(word =>
-        `<span class=\"inline-block overflow-hidden\"><span class=\"animate-title-word inline-block\">${word}</span></span>`
-      ).join(' ');
+      
+      // Only split text if the title is a plain string
+      if (typeof title === 'string') {
+        const text = titleRef.current.innerText;
+        const words = text.split(' ');
+        titleRef.current.innerHTML = words.map(word =>
+          `<span class="inline-block overflow-hidden"><span class="animate-title-word inline-block">${word}</span></span>`
+        ).join(' ');
+      }
     };
     splitText();
-  }, []);
+  }, [title]);
 
   return (
     <section
@@ -132,11 +136,15 @@ function HeroSection21st({
           <h1 
             ref={titleRef}
             className={cn(
-              "relative z-10 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl",
+              "relative z-10 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl [&_span]:inline-block [&_span]:overflow-hidden",
               className
             )}
           >
-            {title}
+            {typeof title === 'string' ? (
+              title
+            ) : (
+              <span className="animate-title-word">{title}</span>
+            )}
           </h1>
 
           {/* Description */}

@@ -235,7 +235,7 @@ export default function HomePage() {
       exit="exit"
     >
       {/* Hero Section - Unique Focus on Impact */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         <HeroBackground />
 
         <div className="container relative z-20 mx-auto px-4">
@@ -245,14 +245,14 @@ export default function HomePage() {
             initial="initial"
             animate="animate"
           >
-            <div className="text-center mb-8">
+            <div className="text-center">
               <motion.div className="overflow-hidden">
                 <AnimatedText
-                  text="Where Every Moment"
+                  text="Your Event. Our-Energy."
                   className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-white via-white to-white/80 text-transparent bg-clip-text"
                 />
                 <AnimatedText
-                  text="Becomes Legendary"
+                  text="Non-Stop."
                   className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-[#E6D3B3] via-[#E6D3B3] to-[#C4A47C] text-transparent bg-clip-text mt-2"
                 />
               </motion.div>
@@ -264,7 +264,7 @@ export default function HomePage() {
                 animate="animate"
                 transition={{ delay: 1 }}
               >
-                Transform your event into an unforgettable experience with Chicago's most innovative entertainment team
+                Transforming your event into an unforgettable experience as Chicago's most innovative entertainment team
               </motion.p>
 
               <motion.div
@@ -285,7 +285,7 @@ export default function HomePage() {
                              text-lg rounded-xl transition-all transform group"
                   >
                     <Link href="/get-a-quote" className="flex items-center space-x-2">
-                      <span>START YOUR JOURNEY</span>
+                      <span>BOOK YOUR EVENT</span>
                       <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </Button>
@@ -296,7 +296,7 @@ export default function HomePage() {
         </div>
 
         <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-4 left-1/2 transform -translate-x-1/2"
           animate={{
             y: [0, 10, 0],
             opacity: [0.3, 1, 0.3]
@@ -312,7 +312,7 @@ export default function HomePage() {
       </section>
 
       {/* Core Values Section */}
-      <section className="py-24 bg-white">
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             className="max-w-6xl mx-auto"
@@ -384,7 +384,7 @@ export default function HomePage() {
       </section>
 
       {/* Interactive Photo Carousel */}
-      <section className="py-24 bg-[#F8F8F8]">
+      <section className="py-12 bg-[#F8F8F8]">
         <div className="container mx-auto px-4">
           <motion.div
             className="max-w-7xl mx-auto"
@@ -398,7 +398,7 @@ export default function HomePage() {
               variants={fadeIn}
             >
               <AnimatedText
-                text="Our Legendary Events"
+                text="Our Memory-Generating Events"
                 className="text-4xl md:text-5xl font-bold text-[#0B132B]"
               />
               <motion.div
@@ -422,7 +422,7 @@ export default function HomePage() {
       </section>
 
       {/* Video Showcase */}
-      <section className="py-24 bg-white">
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center"
@@ -436,11 +436,11 @@ export default function HomePage() {
               variants={fadeIn}
             >
               <AnimatedText
-                text="Your Vision,"
+                text="Your Vision & Taste,"
                 className="text-4xl md:text-5xl font-bold text-[#0B132B]"
               />
               <AnimatedText
-                text="Our Expertise"
+                text="Our Energy & Skills"
                 className="text-4xl md:text-5xl font-bold text-[#0B132B]"
               />
               

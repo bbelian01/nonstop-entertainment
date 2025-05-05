@@ -20,7 +20,7 @@ const testimonials = [
     quote: "Non-Stop Entertainment did an amazing job with my son's Bar-Mitzvah party! DJ Ryan and MC Gator kept the kids moving and the party buzzing. Everyone had a wonderful time and I would definitely hire them again!",
     author: "Dan Shulman",
     eventType: "Bar Mitzvah",
-    image: "/bm.jpg",
+    image: "/mitzvah.jpg",
     rating: 5
   },
   {
