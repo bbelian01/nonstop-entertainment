@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
@@ -55,12 +55,13 @@ function HeroSection21st({
   className,
 }) {
   const titleRef = useRef(null);
+  const videoRef = useRef(null);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
   useEffect(() => {
     const splitText = () => {
       if (!titleRef.current) return;
       
-      // Only split text if the title is a plain string
       if (typeof title === 'string') {
         const text = titleRef.current.innerText;
         const words = text.split(' ');
@@ -72,11 +73,39 @@ function HeroSection21st({
     splitText();
   }, [title]);
 
+  useEffect(() => {
+    if (videoRef.current) {
+      const playVideo = () => {
+        if (videoRef.current) {
+          videoRef.current.play().catch(error => {
+            console.log("Video autoplay failed:", error);
+          });
+        }
+      };
+
+      // Try to play when component mounts
+      playVideo();
+
+      // Also try to play when the video is loaded
+      videoRef.current.addEventListener('loadeddata', () => {
+        setIsVideoLoaded(true);
+        playVideo();
+      });
+
+      // Cleanup
+      return () => {
+        if (videoRef.current) {
+          videoRef.current.removeEventListener('loadeddata', playVideo);
+        }
+      };
+    }
+  }, []);
+
   return (
     <section
       className={cn(
-        "relative bg-background",
-        "py-16 md:py-24 lg:py-32 px-4 overflow-hidden",
+        "relative bg-background min-h-[60vh] md:min-h-[80vh]",
+        "py-12 md:py-24 lg:py-32 px-4 overflow-hidden flex items-center",
         className
       )}
     >
@@ -85,6 +114,7 @@ function HeroSection21st({
         {backgroundVideo ? (
           <>
             <video
+              ref={videoRef}
               autoPlay
               muted
               loop
@@ -108,14 +138,14 @@ function HeroSection21st({
         ) : null}
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl">
-        <div className="flex flex-col items-center gap-8 text-center">
+      <div className="relative z-10 mx-auto max-w-7xl w-full">
+        <div className="flex flex-col items-center gap-6 md:gap-8 text-center">
           {/* Badge */}
           {badge && (
             <Badge 
               variant="outline" 
               className={cn(
-                "animate-fade-in opacity-0 [animation-delay:200ms] gap-2",
+                "animate-fade-in opacity-0 [animation-delay:200ms] gap-2 text-sm md:text-base",
                 className?.includes("text-white") && "border-white/20 text-white"
               )}
             >
@@ -136,7 +166,7 @@ function HeroSection21st({
           <h1 
             ref={titleRef}
             className={cn(
-              "relative z-10 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl [&_span]:inline-block [&_span]:overflow-hidden",
+              "relative z-10 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight max-w-4xl [&_span]:inline-block [&_span]:overflow-hidden px-4 md:px-0",
               className
             )}
           >
@@ -149,14 +179,14 @@ function HeroSection21st({
 
           {/* Description */}
           <p className={cn(
-            "max-w-2xl text-lg md:text-xl animate-fade-in opacity-0 [animation-delay:400ms]",
+            "max-w-2xl text-base sm:text-lg md:text-xl animate-fade-in opacity-0 [animation-delay:400ms] px-4 md:px-0",
             className?.includes("text-white") ? "text-white/80" : "text-muted-foreground"
           )}>
             {description}
           </p>
 
           {/* Actions */}
-          <div className="flex flex-wrap justify-center gap-4 mt-4 animate-fade-in opacity-0 [animation-delay:600ms]">
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 mt-4 animate-fade-in opacity-0 [animation-delay:600ms] w-full px-4 md:px-0">
             {actions.map((action, index) => (
               <Button 
                 key={index} 
@@ -164,12 +194,13 @@ function HeroSection21st({
                 size="lg" 
                 asChild
                 className={cn(
+                  "w-full sm:w-auto",
                   index === 0 && "shadow-lg relative overflow-hidden group",
                   index === 0 && "after:absolute after:inset-0 after:z-[-1] after:bg-primary/20 after:opacity-0 after:transition-opacity after:duration-500 hover:after:opacity-100",
                   className?.includes("text-white") && action.variant === "outline" && "border-white text-white hover:bg-white/10"
                 )}
               >
-                <a href={action.href} className="flex items-center gap-2">
+                <a href={action.href} className="flex items-center justify-center gap-2">
                   {action.text}
                   {action.icon || (index === 0 && <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />)}
                 </a>
