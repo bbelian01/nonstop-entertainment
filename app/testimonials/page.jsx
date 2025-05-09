@@ -11,21 +11,21 @@ import HeroSection21st from "@/components/ui/HeroSection21st"
 const testimonials = [
   {
     quote: "Had a fantastic time with Brandon, Noah and Non-Stop Entertainment for a graduation party. They were super easy to work with and all communication was clear and easy to understand. The night of the event, they set up efficiently & quickly.",
-    author: "Beth Mueller",
+    author: "Beth M.",
     eventType: "Graduation Party",
     image: "/grad2.jpg",
     rating: 5
   },
   {
     quote: "Non-Stop Entertainment did an amazing job with my son's Bar-Mitzvah party! DJ Ryan and MC Gator kept the kids moving and the party buzzing. Everyone had a wonderful time and I would definitely hire them again!",
-    author: "Dan Shulman",
+    author: "Dan S.",
     eventType: "Bar Mitzvah",
     image: "/mitzvah.jpg",
     rating: 5
   },
   {
     quote: "Ryan and Brandon are simply amazing! We had a fundraiser for about 275 guests at the Highland Park Country Club. Our guests ranged in ages from 30-60 years old. Ryan and Brandon read the vibe of the crowd perfectly.",
-    author: "Ann Shafer",
+    author: "Ann S.",
     eventType: "Fundraiser",
     featured: true,
     image: "/corporateorig.jpg",
@@ -124,7 +124,7 @@ export default function TestimonialsPage() {
               </blockquote>
               <figcaption className="mt-8 flex items-center gap-x-6">
                 <div>
-                  <div className="font-semibold text-gray-900">Ann Shafer</div>
+                  <div className="font-semibold text-gray-900">Ann S.</div>
                   <div className="mt-1 text-[#B87D4B]">Fundraiser Event</div>
                 </div>
               </figcaption>
