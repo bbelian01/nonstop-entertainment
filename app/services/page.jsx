@@ -343,7 +343,7 @@ export default function ServicesPage() {
               />
               
               <EventTypeCard
-                image="/social.jpg"
+                image="/upscale.jpg"
                 title="UPSCALE SOCIAL EVENTS"
                 features={[
                   "Elegant dinner parties",

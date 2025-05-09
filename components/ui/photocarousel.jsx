@@ -92,22 +92,22 @@ export default function PhotoCarousel() {
         onClick={prevImage}
         variant="ghost"
         size="icon"
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white rounded-full p-2 z-10"
+        className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white rounded-full p-1 sm:p-2 z-10 touch-manipulation"
       >
-        <ChevronLeft className="w-6 h-6" />
+        <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6" />
       </Button>
 
       <Button
         onClick={nextImage}
         variant="ghost"
         size="icon"
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white rounded-full p-2 z-10"
+        className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white rounded-full p-1 sm:p-2 z-10 touch-manipulation"
       >
-        <ChevronRight className="w-6 h-6" />
+        <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6" />
       </Button>
 
       {/* Dots */}
-      <div className="flex justify-center mt-6 gap-2">
+      <div className="flex justify-center mt-4 sm:mt-6 gap-1.5 sm:gap-2 px-2">
         {images.map((_, index) => (
           <button
             key={index}
@@ -115,13 +115,27 @@ export default function PhotoCarousel() {
               setDirection(index > currentIndex ? 1 : -1);
               setCurrentIndex(index);
             }}
-            className={`w-3 h-3 rounded-full transition-all ${
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all touch-manipulation ${
               index === currentIndex ? "bg-[#E6D3B3] scale-125" : "bg-gray-300 hover:bg-gray-400"
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>
+
+      {/* Touch swipe handling */}
+      <motion.div
+        className="absolute inset-0 z-20"
+        onPanEnd={(e, { offset, velocity }) => {
+          const swipe = Math.abs(offset.x) * velocity.x;
+
+          if (swipe < -50) {
+            nextImage();
+          } else if (swipe > 50) {
+            prevImage();
+          }
+        }}
+      />
     </div>
   );
 }

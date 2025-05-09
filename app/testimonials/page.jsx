@@ -13,7 +13,7 @@ const testimonials = [
     quote: "Had a fantastic time with Brandon, Noah and Non-Stop Entertainment for a graduation party. They were super easy to work with and all communication was clear and easy to understand. The night of the event, they set up efficiently & quickly.",
     author: "Beth Mueller",
     eventType: "Graduation Party",
-    image: "/grad.jpg",
+    image: "/grad2.jpg",
     rating: 5
   },
   {
@@ -28,7 +28,7 @@ const testimonials = [
     author: "Ann Shafer",
     eventType: "Fundraiser",
     featured: true,
-    image: "/fe.jpg",
+    image: "/corporateorig.jpg",
     rating: 5
   },
   // ... other testimonials

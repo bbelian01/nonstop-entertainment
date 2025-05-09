@@ -12,10 +12,10 @@ const contentItems = [
   {
     id: 1,
     type: "image",
-    src: "/event1.jpeg",
-    caption: "Elegant Wedding Reception at The Drake Hotel",
+    src: "/house.mp4",
+    caption: "Sweet 16 Birthday Celebration",
     altText: "Bride and groom's first dance with elegant lighting",
-    eventType: "Wedding",
+    eventType: "Milestone",
     date: "2024-02-15"
   },
   {
@@ -137,14 +137,32 @@ export default function ContentPage() {
         className="text-white"
       />
 
-      {/* Gallery Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {contentItems.map((item) => (
-              <ContentCard key={item.id} item={item} />
-            ))}
-          </div>
+      {/* Coming Soon Section */}
+      <section className="relative min-h-[60vh] bg-gradient-to-b from-gray-50 to-white">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/event2.jpeg"
+            alt="Background"
+            fill
+            className="object-cover filter blur-md opacity-20"
+          />
+        </div>
+        
+        <div className="relative z-10 container mx-auto px-4 h-full">
+          <motion.div 
+            className="flex flex-col items-center justify-center h-[60vh] text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-6xl font-bold text-[#1E1E1E] mb-4">
+              Coming Soon
+            </h2>
+            <p className="text-xl text-[#1E1E1E]/70">
+              We're curating an amazing collection of our best moments.
+              <br />Check back soon!
+            </p>
+          </motion.div>
         </div>
       </section>
     </>

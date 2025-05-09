@@ -44,10 +44,10 @@ export default function AboutPageContent() {
             >
               <div className="aspect-video relative rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/setup2.jpg"
+                  src="/team1.jpg"
                   alt="Non-Stop Entertainment Setup"
                   fill
-                  className="object-cover"
+                  className="object-cover object-[center_40%]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1E1E1E] to-transparent opacity-30"></div>
               </div>
@@ -166,10 +166,13 @@ export default function AboutPageContent() {
                 <div className="w-20 h-1 bg-[#D4AF37]"></div>
                 
                 <p className="text-lg text-[#1E1E1E]/80 leading-relaxed">
-                  A musical virtuoso with an innate ability to blend genres seamlessly, Ryan's 
-                  technical prowess and creative mixing keep the dance floor energized throughout 
-                  the night. His innovative approach to sound has revolutionized the Chicago 
-                  entertainment scene.
+                With over 6 years of experience behind the decks, Ryan Kleczynski brings energy, 
+                precision, and a deep love for music to every event. As the founder of Non-Stop Entertainment, 
+                he’s performed at over 300 weddings, private parties, school dances, and corporate 
+                events across Chicago and Los Angeles. Known for his seamless transitions, high-end sound and
+                 lighting setups, and crowd-first mentality, Ryan turns every celebration into an 
+                 unforgettable experience. Whether it’s Top 40, throwbacks, hip hop, EDM, or 
+                 custom-curated vibes, he keeps the party moving — and the dance floor packed.
                 </p>
 
                 <div className="grid grid-cols-2 gap-4">
