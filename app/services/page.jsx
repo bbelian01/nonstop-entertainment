@@ -162,22 +162,27 @@ export default function ServicesPage() {
       <HeroSection21st
         badge={{ text: "Services" }}
         title={
-          <>
-            <div className="flex items-baseline justify-center gap-x-3">
+          <div className="flex flex-col items-center">
+            <div className="flex flex-col sm:flex-row items-center sm:items-baseline justify-center gap-x-3 gap-y-2">
               <span>Our</span>
               <span className="bg-gradient-to-r from-[#E6D3B3] via-[#E6D3B3] to-[#C4A47C] text-transparent bg-clip-text">
                 First-Class
               </span>
               <span>Services</span>
             </div>
-            <div className="mt-4 text-2xl md:text-3xl font-normal text-[#E6D3B3]">
+            <div className="mt-4 text-xl sm:text-2xl md:text-3xl font-normal text-[#E6D3B3]/80 text-center">
               8+ years of experience with event entertainment serving ages 4+
             </div>
-          </>
+          </div>
         }
         description="From intimate gatherings to grand celebrations, we provide premium DJ services tailored to your event's unique needs."
         actions={[
-          { text: "Get a Quote", href: "/get-a-quote", variant: "default" }
+          { 
+            text: "Get a Quote", 
+            href: "/get-a-quote", 
+            variant: "default",
+            icon: <ArrowRight className="h-4 w-4" />
+          }
         ]}
         backgroundVideo={{
           src: "/hero-bg.mp4",

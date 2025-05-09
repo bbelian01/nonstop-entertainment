@@ -123,10 +123,14 @@ export default function AboutPageContent() {
                 <div className="w-20 h-1 bg-[#D4AF37]"></div>
                 
                 <p className="text-lg text-[#1E1E1E]/80 leading-relaxed">
-                  As the voice that commands the celebration, Brandon brings an electric presence 
-                  and masterful crowd engagement to every event. His unique ability to read the room 
-                  and create magical moments has earned him recognition as one of Chicago's most 
-                  dynamic MCs.
+                Brandon Belian is the co-founder and lead MC of Non-Stop Entertainment, 
+                bringing unmatched energy, charisma, and professionalism to every event. 
+                With over 6 years of experience on the mic, he knows exactly how to engage any crowd, 
+                from high-energy teen parties to elegant private events. Brandon’s talent 
+                lies in creating a seamless flow, hyping the room, and keeping every moment
+                 exciting and on schedule. Known for his confidence, creativity, and crowd 
+                 control, Brandon ensures that every guest feels part of the action. When 
+                 Brandon’s on the mic, your event comes to life.
                 </p>
 
                 <div className="grid grid-cols-2 gap-4">
