@@ -45,7 +45,7 @@ export default function AboutPageContent() {
               <div className="aspect-video relative rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/team1.jpg"
-                  alt="Non-Stop Entertainment Setup"
+                  alt="Non-Stop Entertainment team setting up professional sound and lighting equipment for an event"
                   fill
                   className="object-cover object-[center_40%]"
                 />
@@ -98,7 +98,7 @@ export default function AboutPageContent() {
                 <div className="aspect-[3/4] relative rounded-2xl overflow-hidden shadow-2xl">
                   <Image
                     src="/brandon.jpg"
-                    alt="Brandon Belian - Lead MC and Co-Owner"
+                    alt="Brandon Belian, Lead MC and Co-Owner of Non-Stop Entertainment, in action at an event"
                     fill
                     className="object-cover"
                   />
@@ -126,11 +126,11 @@ export default function AboutPageContent() {
                 Brandon Belian is the co-founder and lead MC of Non-Stop Entertainment, 
                 bringing unmatched energy, charisma, and professionalism to every event. 
                 With over 6 years of experience on the mic, he knows exactly how to engage any crowd, 
-                from high-energy teen parties to elegant private events. Brandon’s talent 
+                from high-energy teen parties to elegant private events. Brandon's talent 
                 lies in creating a seamless flow, hyping the room, and keeping every moment
                  exciting and on schedule. Known for his confidence, creativity, and crowd 
                  control, Brandon ensures that every guest feels part of the action. When 
-                 Brandon’s on the mic, your event comes to life.
+                 Brandon's on the mic, your event comes to life.
                 </p>
 
                 <div className="grid grid-cols-2 gap-4">
@@ -172,10 +172,10 @@ export default function AboutPageContent() {
                 <p className="text-lg text-[#1E1E1E]/80 leading-relaxed">
                 With over 6 years of experience behind the decks, Ryan Kleczynski brings energy, 
                 precision, and a deep love for music to every event. As the founder of Non-Stop Entertainment, 
-                he’s performed at over 300 weddings, private parties, school dances, and corporate 
+                he's performed at over 300 weddings, private parties, school dances, and corporate 
                 events across Chicago and Los Angeles. Known for his seamless transitions, high-end sound and
                  lighting setups, and crowd-first mentality, Ryan turns every celebration into an 
-                 unforgettable experience. Whether it’s Top 40, throwbacks, hip hop, EDM, or 
+                 unforgettable experience. Whether it's Top 40, throwbacks, hip hop, EDM, or 
                  custom-curated vibes, he keeps the party moving — and the dance floor packed.
                 </p>
 
@@ -200,7 +200,7 @@ export default function AboutPageContent() {
                 <div className="aspect-[3/4] relative rounded-2xl overflow-hidden shadow-2xl">
                   <Image
                     src="/ryan.jpg"
-                    alt="Ryan Kleczynski - Lead DJ and Co-Owner"
+                    alt="Ryan Kleczynski, Lead DJ and Co-Owner of Non-Stop Entertainment, performing at an event"
                     fill
                     className="object-cover"
                   />

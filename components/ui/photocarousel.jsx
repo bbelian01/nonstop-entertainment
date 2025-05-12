@@ -7,12 +7,30 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const images = [
-  "/event1.jpeg",
-  "/event2.jpeg",
-  "/event3.jpeg",
-  "/event4.jpeg",
-  "/event5.jpeg",
-  "/event6.jpeg",
+  {
+    src: "/event1.jpeg",
+    alt: "Corporate event entertainment setup with professional lighting and sound equipment"
+  },
+  {
+    src: "/event2.jpeg",
+    alt: "Wedding celebration with guests dancing and enjoying the entertainment"
+  },
+  {
+    src: "/event3.jpeg",
+    alt: "Corporate team building event with interactive entertainment"
+  },
+  {
+    src: "/event4.jpeg",
+    alt: "Elegant wedding reception with professional DJ and lighting"
+  },
+  {
+    src: "/event5.jpeg",
+    alt: "Corporate awards ceremony with entertainment and celebration"
+  },
+  {
+    src: "/event6.jpeg",
+    alt: "Special event with custom lighting and sound production"
+  }
 ];
 
 const variants = {
@@ -74,8 +92,8 @@ export default function PhotoCarousel() {
               className="w-full h-full"
             >
               <Image
-                src={images[currentIndex]}
-                alt={`Event photo ${currentIndex + 1}`}
+                src={images[currentIndex].src}
+                alt={images[currentIndex].alt}
                 fill
                 className="object-cover rounded-xl shadow-2xl border-4 border-white"
                 priority

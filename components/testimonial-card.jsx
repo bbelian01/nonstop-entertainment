@@ -22,7 +22,7 @@ export default function TestimonialCard({
       <div className="relative h-48">
         <Image
           src={image || "/placeholder.svg"}
-          alt={`${eventType} event`}
+          alt={`${author}'s ${eventType} event at Non-Stop Entertainment`}
           fill
           className="object-cover"
         />

@@ -55,7 +55,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center flex-shrink-0">
             <Image
               src="/Logo.jpg"
-              alt="Non-Stop Entertainment"
+              alt="Non-Stop Entertainment - Professional DJ and MC Services Logo"
               width={200}
               height={55}
               className="object-contain"

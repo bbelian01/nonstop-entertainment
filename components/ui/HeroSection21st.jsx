@@ -130,7 +130,7 @@ function HeroSection21st({
           <>
             <img
               src={backgroundImage}
-              alt="Background"
+              alt="Professional event entertainment setup with dynamic lighting and sound equipment"
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
