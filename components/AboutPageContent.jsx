@@ -98,7 +98,7 @@ export default function AboutPageContent() {
                 <div className="aspect-[3/4] relative rounded-2xl overflow-hidden shadow-2xl">
                   <Image
                     src="/brandon.jpg"
-                    alt="Brandon Belian, Lead MC and Co-Owner of Non-Stop Entertainment, in action at an event"
+                    alt="Brandon Belian - Lead MC and Co-Owner"
                     fill
                     className="object-cover"
                   />
@@ -172,10 +172,10 @@ export default function AboutPageContent() {
                 <p className="text-lg text-[#1E1E1E]/80 leading-relaxed">
                 With over 6 years of experience behind the decks, Ryan Kleczynski brings energy, 
                 precision, and a deep love for music to every event. As the founder of Non-Stop Entertainment, 
-                he's performed at over 300 weddings, private parties, school dances, and corporate 
+                he’s performed at over 300 weddings, private parties, school dances, and corporate 
                 events across Chicago and Los Angeles. Known for his seamless transitions, high-end sound and
                  lighting setups, and crowd-first mentality, Ryan turns every celebration into an 
-                 unforgettable experience. Whether it's Top 40, throwbacks, hip hop, EDM, or 
+                 unforgettable experience. Whether it’s Top 40, throwbacks, hip hop, EDM, or 
                  custom-curated vibes, he keeps the party moving — and the dance floor packed.
                 </p>
 
@@ -200,7 +200,7 @@ export default function AboutPageContent() {
                 <div className="aspect-[3/4] relative rounded-2xl overflow-hidden shadow-2xl">
                   <Image
                     src="/ryan.jpg"
-                    alt="Ryan Kleczynski, Lead DJ and Co-Owner of Non-Stop Entertainment, performing at an event"
+                    alt="Ryan Kleczynski - Lead DJ and Co-Owner"
                     fill
                     className="object-cover"
                   />
